@@ -1,0 +1,6 @@
+{
+  "liveServer.settings.mount": [
+    ["/digital", "./digital.html"],
+    ["/mosaic", "./mosaic.html"]
+  ]
+}

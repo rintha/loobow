@@ -1,0 +1,41 @@
+/* Shared division navigation, separate from the existing agency stylesheet. */
+.division-bar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 120;
+  height: 36px;
+  background: #0c0f17;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  line-height: 1;
+}
+
+.division-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.division-home { display: inline-flex; align-items: center; justify-content: center; width: 32px; min-height: 30px; border-radius: 4px; color: #b6bac4; text-decoration: none; }
+.division-home > svg { display: block; width: 18px; height: 18px; }
+.division-options { display: flex; align-items: center; gap: 4px; height: 100%; }
+.division-link { display: inline-flex; align-items: center; min-height: 30px; padding: 0 14px; color: #b6bac4; text-decoration: none; }
+.division-link[aria-current="page"] { background: #262d3b; color: #fff; border-radius: 4px; }
+.division-home:hover, .division-link:hover { color: #fff; }
+.division-bar a:focus-visible { outline: 2px solid #efc766; outline-offset: 0; }
+.digital-page .site-header { top: 36px; }
+.digital-page section[id] { scroll-margin-top: 36px; }
+.mosaic-page .division-bar { background: #14224b; }
+.mosaic-page .division-link[aria-current="page"] { color: #efc766; background: rgba(255, 255, 255, .1); }
+
+@media (max-width: 680px) {
+  .division-bar-inner { padding: 0 20px; }
+  .division-link { padding: 0 11px; }
+}

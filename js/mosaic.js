@@ -61,7 +61,6 @@
     var dialog = document.getElementById("galleryDialog");
     var image = document.getElementById("galleryImage");
     var caption = document.getElementById("galleryCaption");
-    var counter = document.getElementById("galleryCounter");
     var current = 0;
     var opener = null;
 
@@ -71,7 +70,6 @@
       image.src = card.dataset.galleryImage;
       image.alt = card.querySelector("img").alt;
       caption.textContent = card.dataset.galleryTitle;
-      counter.textContent = (current + 1) + " / " + cards.length;
     }
 
     cards.forEach(function (card, index) {

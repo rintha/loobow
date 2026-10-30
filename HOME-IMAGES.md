@@ -4,18 +4,19 @@ The two welcome panels use local JPEG images. Replace the files below to change 
 
 | Panel | File | Recommended replacement size |
 | --- | --- | --- |
-| Loobow Mosaic | `images/home/mosaic.jpg` | **1600 × 1600 px** |
-| Loobow Digital | `images/home/digital.jpg` | **1600 × 1600 px** |
+| Loobow Mosaic | `images/home/mosaic-cover.jpg` | **2400 × 1600 px** |
+| Loobow Digital | `images/home/digital-video-still.jpg` | **1920 × 1080 px** |
 
-- Use square JPGs, ideally under 500 KB each. Keep the exact filenames above. WebP is also suitable if the image paths in the HTML are updated.
+- Use JPGs, ideally under 500 KB each. Keep the exact filenames above. WebP is also suitable if the image paths in the HTML are updated. Update the image's HTML width and height if the replacement has different dimensions.
 - Keep the main subject near the centre. The panels crop the image to fill their area, with different crops on desktop and mobile. Avoid essential details close to the edges.
 - Leave the lower third visually simple: the website adds the heading, description and link over a dark gradient. Do not add text or buttons to the image itself.
-- The temporary Mosaic image is extracted from the supplied brochure (2567 × 1433 px). It is also used on the first-stage Mosaic introduction page. The temporary Digital image is a copy of the existing campaign collage (2000 × 1125 px).
+- The Mosaic image is the cover artwork extracted from the updated eight-page brochure (2567 × 1433 px). It is shared with the Mosaic hero. The previous cover remains at `images/home/mosaic.jpg` but is no longer displayed.
+- The Digital image is a static frame captured at **2.2 seconds** from the Digital hero video, `images/option2_vdo.mp4`, at its native **1920 × 1080 px** resolution. The previous campaign collage remains at `images/home/digital.jpg` but is no longer displayed.
 - Change `.world--mosaic .world-image` or `.world--digital .world-image` in `css/welcome.css` if a replacement needs a different `object-position`.
 
 ## Page structure
 
-- `index.html`: two-division welcome page, served at `/`.
+- `index.html`: welcome page, served at `/`, with a white Loobow header, a primary Mosaic panel occupying 65% of the desktop width, and a secondary Digital panel occupying 35%. Phones show Mosaic first as the larger section and Digital below; short screens can scroll to keep the larger text readable.
 - `digital.html`: original agency page with shared division navigation added, served at `/digital`.
 - `mosaic.html`: full brochure-based Mosaic website, served at `/mosaic`, including the founder, craft, spaces, sample works, process, materials and enquiry form.
 - `css/welcome.css`: welcome page styles.

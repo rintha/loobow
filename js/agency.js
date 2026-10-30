@@ -9,26 +9,6 @@
 
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---------- Preloader ---------- */
-
-  (function initPreloader() {
-    var preloader = document.getElementById("preloader");
-    if (!preloader) return;
-
-    var hidden = false;
-
-    function hide() {
-      if (hidden) return;
-      hidden = true;
-      preloader.classList.add("done");
-      setTimeout(function () { preloader.remove(); }, 700);
-    }
-
-    window.addEventListener("load", function () { setTimeout(hide, 400); });
-    // safety net so a slow asset can never leave the page stuck behind the loader
-    setTimeout(hide, 4000);
-  })();
-
   /* ---------- Lenis smooth scrolling ---------- */
 
   var lenis = null;

@@ -110,6 +110,17 @@ input:focus-visible, textarea:focus-visible { outline: 2px solid var(--gold-ink)
 .hero-copy h1 > span { display: block; margin-top: 10px; color: #f4d881; }
 .hero-copy .flourish { margin: 30px auto 24px; color: #efcc6a; }
 .hero-tagline { font-size: clamp(16px, 1.5vw, 21px); font-weight: 700; line-height: 1.55; letter-spacing: .09em; text-transform: uppercase; }
+
+/* A gentle downward entrance for the opening copy on each page visit. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes mosaic-hero-enter {
+    from { opacity: 0; transform: translateY(-18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-copy h1 { animation: mosaic-hero-enter .75s cubic-bezier(.22, .61, .36, 1) .08s backwards; }
+  .hero-tagline { animation: mosaic-hero-enter .75s cubic-bezier(.22, .61, .36, 1) .2s backwards; }
+}
+
 .hero-actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 16px; margin-top: 32px; }
 .hero-actions > .button { min-height: 52px; padding: 14px 24px; }
 .hero-actions > .button-primary { --button-hover-fill: #f7dfa0; background: #efcc6a; color: var(--navy); }

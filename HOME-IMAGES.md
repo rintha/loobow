@@ -18,13 +18,13 @@ The two welcome panels use local JPEG images. Replace the files below to change 
 ## Page structure
 
 - `index.html`: welcome page, served at `/`, with a white Loobow header, a primary Mosaic panel occupying 65% of the desktop width, and a secondary Digital panel occupying 35%. Phones show Mosaic first as the larger section and Digital below; short screens can scroll to keep the larger text readable.
-- `digital.html`: original agency page with shared division navigation added, served at `/digital`.
-- `mosaic.html`: full brochure-based Mosaic website, served at `/mosaic`, including the founder, craft, spaces, sample works, process, materials and enquiry form.
+- `digital.html`: original agency page with shared division navigation added, served directly at `/digital.html`.
+- `mosaic.html`: full brochure-based Mosaic website, served directly at `/mosaic.html`, including the founder, craft, spaces, sample works, process, materials and enquiry form.
 - `css/welcome.css`: welcome page styles.
 - Both panels share the same title, Loobow prefix, description and link typography at each responsive breakpoint; Mosaic retains the larger panel area.
 - `css/mosaic.css` / `js/mosaic.js`: the light Mosaic theme, mobile navigation, sample-work previews and enquiry form. See [MOSAIC-CONTENT.md](MOSAIC-CONTENT.md) for source assets.
 - `css/divisions.css`: shared fixed division switch on Digital and Mosaic.
-- `js/welcome.js`: routes old homepage section bookmarks (for example `/#work`) to `/digital#work`.
-- `web.config` / `.htaccess`: IIS / Apache clean URL routing. See [ROUTING.md](ROUTING.md) for hosting and preview requirements.
+- `js/welcome.js`: plays the existing `images/mockup_454_825.webm` Loobow loading animation on the main homepage on load and refresh, and routes old section bookmarks (for example `/#work`) to `/digital.html#work`. Digital and Mosaic open without a preloader. Reduced-motion users skip the animation; a timeout clears it if loading stalls.
+- `web.config` / `.htaccess`: optional IIS / Apache redirects for legacy URLs. Direct HTML navigation needs no server changes; see [ROUTING.md](ROUTING.md) for upload instructions.
 
 The existing `css/agency.css` and `js/agency.js` are unchanged.

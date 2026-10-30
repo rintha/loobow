@@ -1,4 +1,4 @@
-# Apache equivalent of the routes in web.config (IIS).
+# Optional Apache redirects for old clean URLs. HTML pages work without this file.
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
@@ -7,12 +7,8 @@
   RewriteCond %{THE_REQUEST} \s/+index\.html(?:[?\s]) [NC]
   RewriteRule ^index\.html$ / [R=301,L]
 
-  RewriteCond %{THE_REQUEST} \s/+(?:digital|mosaic)\.html(?:[?\s]) [NC]
-  RewriteRule ^(digital|mosaic)\.html$ /$1 [R=301,L]
+  RewriteRule ^(digital|mosaic)/*$ /$1.html [R=301,L]
 
-  RewriteRule ^(digital|mosaic)/+$ /$1 [R=301,L]
-
-  # Keep the browser URL clean while serving the existing HTML files.
+  # The welcome page remains at the domain root.
   RewriteRule ^$ index.html [L]
-  RewriteRule ^(digital|mosaic)$ $1.html [L]
 </IfModule>

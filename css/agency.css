@@ -264,35 +264,6 @@ section {
   pointer-events: none;
 }
 
-/* ---------- Preloader ---------- */
-
-#preloader {
-  position: fixed;
-  inset: 0;
-  z-index: 300;
-  background: #0A0B0F;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.55s ease, visibility 0.55s ease;
-}
-
-#preloader img,
-#preloader video {
-  display: block;
-  width: min(230px, 55vw);
-  height: auto;
-  /* same trick as the about clip: the video has solid black baked in, so
-     screen blending sinks it into the dark preloader instead of showing a card */
-  mix-blend-mode: screen;
-}
-
-#preloader.done {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
 /* ---------- Header ---------- */
 
 .site-header {

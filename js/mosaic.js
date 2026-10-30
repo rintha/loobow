@@ -5,6 +5,7 @@
   var header = document.getElementById("mosaicHeader");
   var menuToggle = document.getElementById("menuToggle");
   var nav = document.getElementById("mosaicNav");
+  var toTop = document.getElementById("toTop");
   var mobileQuery = window.matchMedia("(max-width: 900px)");
 
   function setMenu(open, restoreFocus) {
@@ -32,9 +33,25 @@
   });
   mobileQuery.addEventListener("change", function () { setMenu(false); });
 
-  function updateHeader() { header.classList.toggle("is-scrolled", window.scrollY > 20); }
+  function updateHeader() {
+    header.classList.toggle("is-scrolled", window.scrollY > 20);
+    if (toTop) toTop.classList.toggle("show", window.scrollY > 600);
+    if (window.scrollY <= 20) {
+      nav.querySelectorAll("a.is-active").forEach(function (link) {
+        link.classList.remove("is-active");
+        link.removeAttribute("aria-current");
+      });
+    }
+  }
   window.addEventListener("scroll", updateHeader, { passive: true });
   updateHeader();
+
+  if (toTop) {
+    toTop.addEventListener("click", function () {
+      var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
+    });
+  }
 
   if ("IntersectionObserver" in window) {
     var navLinks = Array.from(nav.querySelectorAll('a[href^="#"]'));
@@ -61,6 +78,7 @@
     var dialog = document.getElementById("galleryDialog");
     var image = document.getElementById("galleryImage");
     var caption = document.getElementById("galleryCaption");
+    var details = document.getElementById("galleryDetails");
     var current = 0;
     var opener = null;
 
@@ -69,7 +87,24 @@
       var card = cards[current];
       image.src = card.dataset.galleryImage;
       image.alt = card.querySelector("img").alt;
-      caption.textContent = card.dataset.galleryTitle;
+      var collection = card.closest(".collection-card");
+      caption.replaceChildren();
+      if (collection) {
+        var size = document.createElement("span");
+        size.className = "gallery-art-size";
+        size.textContent = card.querySelector(".collection-size").textContent;
+        var name = document.createElement("span");
+        name.className = "gallery-art-name";
+        name.textContent = card.dataset.galleryTitle;
+        caption.append(size, "\n", name);
+      } else {
+        caption.textContent = card.dataset.galleryTitle;
+      }
+      var template = collection && collection.querySelector(".gallery-details-template");
+      details.replaceChildren();
+      details.hidden = !template;
+      dialog.classList.toggle("has-details", Boolean(template));
+      if (template) details.appendChild(template.content.cloneNode(true));
     }
 
     cards.forEach(function (card, index) {

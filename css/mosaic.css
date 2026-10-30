@@ -111,14 +111,17 @@ input:focus-visible, textarea:focus-visible { outline: 2px solid var(--gold-ink)
 .hero-copy .flourish { margin: 30px auto 24px; color: #efcc6a; }
 .hero-tagline { font-size: clamp(16px, 1.5vw, 21px); font-weight: 700; line-height: 1.55; letter-spacing: .09em; text-transform: uppercase; }
 
-/* A gentle downward entrance for the opening copy on each page visit. */
+/* Digital's 0.9s reveal, easing and stagger, with the 34px movement reversed. */
 @media (prefers-reduced-motion: no-preference) {
   @keyframes mosaic-hero-enter {
-    from { opacity: 0; transform: translateY(-18px); }
+    from { opacity: 0; transform: translateY(-34px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  .hero-copy h1 { animation: mosaic-hero-enter .75s cubic-bezier(.22, .61, .36, 1) .08s backwards; }
-  .hero-tagline { animation: mosaic-hero-enter .75s cubic-bezier(.22, .61, .36, 1) .2s backwards; }
+  .hero-copy > *, .hero-scroll > * {
+    animation: mosaic-hero-enter .9s cubic-bezier(.22, 1, .36, 1) var(--hero-enter-delay, 0s) backwards;
+  }
+  .hero-copy > .flourish, .hero-tagline { --hero-enter-delay: .12s; }
+  .hero-actions, .hero-scroll > * { --hero-enter-delay: .24s; }
 }
 
 .hero-actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 16px; margin-top: 32px; }

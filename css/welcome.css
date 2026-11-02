@@ -144,27 +144,30 @@ a:focus-visible { outline: 3px solid var(--blue); outline-offset: 5px; }
   .world-description br { display: none; }
 }
 
-/* Stack on phones, keeping Mosaic larger and allowing text room to breathe. */
+/* Fit both entrances on phones, with Mosaic receiving the larger image area. */
 @media (max-width: 700px) {
-  .welcome-page { display: block; height: auto; min-height: 100vh; min-height: 100dvh; overflow: visible; }
+  .welcome-page { height: 100vh; height: 100dvh; min-height: 646px; overflow: auto; }
   .welcome-header { min-height: 56px; padding: 8px 24px; gap: 14px; }
   .loobow-wordmark { font-size: 26px; }
   .welcome-whatsapp { min-height: 32px; padding: 6px 10px; gap: 6px; }
   .welcome-whatsapp > svg { width: 15px; height: 15px; }
-  .welcome-page main { height: auto; }
-  .worlds { grid-template-columns: minmax(0, 1fr); height: auto; }
-  .world { height: auto; padding: 24px; }
-  .world--mosaic { min-height: max(540px, 65svh); }
-  .world--digital { min-height: max(360px, 35svh); }
-  .world-content { margin-top: 24px; }
-  .world-topline { font-size: 10px; }
-  .world-kicker { margin-bottom: 12px; font-size: 12px; }
-  .world h2 { font-size: clamp(50px, 13.5vw, 76px); }
-  .world-description { margin-top: 18px; max-width: 480px; font-size: 15px; line-height: 1.65; }
-  .world-bottomline { margin-top: 24px; padding-top: 18px; }
-  .world-action { font-size: 14px; gap: 16px; }
+  .worlds { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(min-content, 65fr) minmax(min-content, 35fr); }
+  .world { height: auto; padding: 18px 22px; }
+  .world--mosaic { min-height: 320px; }
+  .world--digital { min-height: 250px; }
+  .world-content { flex-shrink: 0; margin-top: 14px; }
+  .world-topline { flex-shrink: 0; font-size: 9px; }
+  .world-symbol { width: 22px; height: 22px; }
+  .mosaic-symbol { width: 16px; height: 16px; }
+  .world-kicker { margin-bottom: 8px; font-size: 11px; line-height: 1.5; }
+  .world h2 { font-size: clamp(42px, 12vw, 54px); }
+  .world h2 > span:first-child { margin-bottom: 4px; }
+  .world-description { margin-top: 12px; max-width: 480px; font-size: 13px; line-height: 1.5; }
+  .world-bottomline { gap: 10px; margin-top: 14px; padding-top: 12px; }
+  .world-action { font-size: 13px; gap: 12px; }
+  .world-action > span { width: 32px; height: 32px; font-size: 18px; }
   .world--digital .world-bottomline { flex-wrap: nowrap; }
-  .world-caption, .world--digital .world-caption { font-size: 10px; text-align: right; }
+  .world-caption, .world--digital .world-caption { font-size: 9px; text-align: right; }
 }
 
 /* Short desktop windows retain both entrances without clipping their copy. */

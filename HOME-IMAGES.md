@@ -17,7 +17,7 @@ The two welcome panels use local JPEG images. Replace the files below to change 
 
 ## Page structure
 
-- `index.html`: welcome page, served at `/`, with a white Loobow header, a primary Mosaic panel occupying 65% of the desktop width, and a secondary Digital panel occupying 35%. Phones show Mosaic first as the larger section and Digital below; short screens can scroll to keep the larger text readable.
+- `index.html`: welcome page, served at `/`, with a white Loobow header, a primary Mosaic panel occupying 65% of the desktop width, and a secondary Digital panel occupying 35%. Phones stack both choices within the available screen height, giving Mosaic the larger share where space allows. Compact, matching typography keeps Digital visible; short screens and enlarged text can scroll instead of clipping the content.
 - `digital.html`: original agency page with shared division navigation added, served directly at `/digital.html`.
 - `mosaic.html`: full brochure-based Mosaic website, served directly at `/mosaic.html`, including the founder, craft, spaces, sample works, process, materials and enquiry form.
 - `css/welcome.css`: welcome page styles.
